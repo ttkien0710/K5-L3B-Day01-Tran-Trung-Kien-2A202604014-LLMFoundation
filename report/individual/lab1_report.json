@@ -26,20 +26,20 @@
    "time": "16:03:39"
   },
   "llm_models": {
-   "text": "Dự đoán do AI trước chạy: Model lớn có thể hơn model nhỏ dưới 0.05 F1 trên SUB40; theo bảng giá đề bài đắt khoảng 10 lần nếu số token tương đương; chưa chắc thắng embedding+LogReg.",
-   "time": "16:03:43"
+   "text": "Dự đoán AI trước lần chạy Gemini: Flash có thể cao hơn Lite dưới 0.05 F1 trên SUB40; giá input gấp 5 và output gấp 3.6 nhưng chi phí thực còn phụ thuộc số token suy luận/cache. Chưa chắc thắng Encoder+LogReg.",
+   "time": "00:41:30"
   },
   "llm_fewshot": {
-   "text": "Dự đoán do AI trước chạy: Few-shot có thể tăng F1 khoảng 0.02 nhưng SUB40 nhiễu lớn; prompt dài hơn nên chi phí tăng khoảng 2 đến 4 lần.",
-   "time": "16:03:43"
+   "text": "Dự đoán AI trước lần chạy Gemini: thêm 4 ví dụ có thể tăng F1 nhẹ khoảng 0.02, nhưng tập 40 tin nhỏ nên có thể không tăng; chi phí input mỗi tin tăng khoảng 2–4 lần.",
+   "time": "00:41:30"
   },
   "tradeoff": {
-   "text": "Dự đoán do AI trước chạy: BoW+LogReg có thể nằm Pareto vì rất nhanh; embedding+LogReg có thể nằm Pareto nếu F1 cao hơn. LLM nhiều khả năng vượt SLA 50ms.",
-   "time": "16:03:43"
+   "text": "Dự đoán AI trước biểu đồ Gemini: BoW+LogReg và đầu embedding nhanh có thể nằm Pareto; LLM có thể giảm lỗi nhưng p95 gọi mạng vượt 50 ms.",
+   "time": "00:44:23"
   },
   "hard_eval": {
-   "text": "Dự đoán do AI trước chạy: Accuracy BoW khoảng 0.50, embedding khoảng 0.65, LLM khoảng 0.85. BoW khó với natural_spam và obfuscation; LLM khó với prompt_injection.",
-   "time": "16:03:43"
+   "text": "Dự đoán AI trước stress test Gemini: Lite accuracy khoảng 0.80–0.90; prompt phòng thủ có thể cải thiện nhóm injection nhưng gây chặn nhầm tin trích dẫn. BoW khoảng 0.50, embedding khoảng 0.65 theo kết quả local đã biết.",
+   "time": "00:44:24"
   }
  },
  "checks": {
@@ -99,9 +99,81 @@
   {
    "key": "hard_eval",
    "time": "16:03:43"
+  },
+  {
+   "key": "llm_models",
+   "time": "08:35:51"
+  },
+  {
+   "key": "llm_fewshot",
+   "time": "08:35:52"
+  },
+  {
+   "key": "tradeoff",
+   "time": "08:35:52"
+  },
+  {
+   "key": "hard_eval",
+   "time": "08:35:54"
   }
  ],
  "challenge": 3,
+ "prediction_history": [
+  {
+   "key": "llm_models",
+   "text": "Dự đoán do AI trước chạy: Model lớn có thể hơn model nhỏ dưới 0.05 F1 trên SUB40; theo bảng giá đề bài đắt khoảng 10 lần nếu số token tương đương; chưa chắc thắng embedding+LogReg.",
+   "time": "16:03:43",
+   "context": "Previous local-only run"
+  },
+  {
+   "key": "llm_fewshot",
+   "text": "Dự đoán do AI trước chạy: Few-shot có thể tăng F1 khoảng 0.02 nhưng SUB40 nhiễu lớn; prompt dài hơn nên chi phí tăng khoảng 2 đến 4 lần.",
+   "time": "16:03:43",
+   "context": "Previous local-only run"
+  },
+  {
+   "key": "tradeoff",
+   "text": "Dự đoán do AI trước chạy: BoW+LogReg có thể nằm Pareto vì rất nhanh; embedding+LogReg có thể nằm Pareto nếu F1 cao hơn. LLM nhiều khả năng vượt SLA 50ms.",
+   "time": "16:03:43",
+   "context": "Previous local-only run"
+  },
+  {
+   "key": "hard_eval",
+   "text": "Dự đoán do AI trước chạy: Accuracy BoW khoảng 0.50, embedding khoảng 0.65, LLM khoảng 0.85. BoW khó với natural_spam và obfuscation; LLM khó với prompt_injection.",
+   "time": "16:03:43",
+   "context": "Previous local-only run"
+  }
+ ],
+ "llm_metadata": {
+  "provider": "gemini",
+  "big_model": "gemini-3.5-flash",
+  "mini_model": "gemini-3.5-flash-lite",
+  "price_per_1m": {
+   "gemini-3.5-flash": [
+    1.5,
+    9.0
+   ],
+   "gemini-3.5-flash-lite": [
+    0.3,
+    2.5
+   ]
+  },
+  "request_count": 199,
+  "total_estimated_usd": 0.009705799999999999,
+  "billing_note": "Standard list-price estimates from API usage, including thought tokens; not an invoice or a free-tier charge.",
+  "latency_note": "Original successful API request latency; excludes intentional pacing and quota/retry waits. Free-tier effective throughput is lower.",
+  "flash_pending_quota": true,
+  "local_results_reused": true,
+  "run_time": "2026-11-07 08:43:12 +0700",
+  "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing",
+  "partial_flash_count": 18,
+  "classification_estimated_usd": 0.007587300000000001,
+  "unfinished_flash_estimated_usd": 0.0020729999999999998,
+  "demo_estimated_usd": 4.549999999999823e-05,
+  "prediction_resume_note": "Earlier recorded forecasts were reused when replaying cached responses; a resume timestamp is not a new blind forecast.",
+  "flash_quota_status": "RESOURCE_EXHAUSTED",
+  "flash_quota_reset_at_estimate": "2026-11-07T14:59:59+07:00"
+ },
  "results": {
   "1. BoW + LogReg (tự code)": {
    "accuracy": 0.9767741935483871,
@@ -162,6 +234,30 @@
    "p50_ms": 14.346599999043974,
    "p95_ms": 22.96718499965209,
    "usd_per_1k": 0.0
+  },
+  "4a. LLM nhỏ zero-shot": {
+   "accuracy": 0.925,
+   "precision": 0.9047619047619048,
+   "recall": 0.95,
+   "f1": 0.926829268292683,
+   "f1_SUB": 0.926829268292683,
+   "train_s": 0.0,
+   "msg_per_s": 0.9419404286021654,
+   "p50_ms": 1023.4927000019525,
+   "p95_ms": 1408.436490002714,
+   "usd_per_1k": 0.024265
+  },
+  "4c. LLM nhỏ few-shot": {
+   "accuracy": 0.95,
+   "precision": 1.0,
+   "recall": 0.9,
+   "f1": 0.9473684210526315,
+   "f1_SUB": 0.9473684210526315,
+   "train_s": 0.0,
+   "msg_per_s": 0.44818647483122104,
+   "p50_ms": 1278.9860499979113,
+   "p95_ms": 4896.286424997742,
+   "usd_per_1k": 0.07436500000000003
   }
  }
 }
